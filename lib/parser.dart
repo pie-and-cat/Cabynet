@@ -1,6 +1,6 @@
 import 'dart:math';
 
-Prescription? parser(String x){
+Prescription? parse(String x){
   final List<String> tokens = List.from(["qt","rx","quantity","qty","take"],growable: false);
   final List<String> unitTokens = List.from(["pill","tablet","drop","daily","weekly","capsule","times"],growable: false);
   final List<String> numericTokens = List.from(["one","two","three","four","five","six","eight","nine","ten",
@@ -21,7 +21,6 @@ Prescription? parser(String x){
         i++;
       }
       String temp = x.substring(j, i);
-      print(temp);
       //find token that this could possibly be
       int token = findToken(temp, tokens);
       //threshold for similarity of tokens is 33% different
@@ -152,7 +151,7 @@ Prescription? parser(String x){
   if(name == null || !matched.contains("rx")){
     return null;
   }else{
-    PrescriptionBuilder pb = PrescriptionBuilder(name,matched[matched.indexOf("rx")+1]);
+    PrescriptionBuilder pb = PrescriptionBuilder(name,int.parse(matched[matched.indexOf("rx")+1]));
     i = 0;
     if("daily weekly".contains(matched[0])){
       pb.timeframe = matched[0];
@@ -220,7 +219,7 @@ int lev(String a, String b){
 //uses Dart's Cascade notation of building objects
 class Prescription {
   final String name;
-  final String rx;
+  final int rx;
   final String? amt;
   final String? unit;
   final String? timeframe;
@@ -243,7 +242,7 @@ class Prescription {
 //                 ..setter_method_name(args)).build();
 class PrescriptionBuilder {
   final String name;
-  final String rx;
+  final int rx;
   String? amt;
   String? unit;
   String? timeframe;
