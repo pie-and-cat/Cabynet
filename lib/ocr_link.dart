@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 
 //  HOW TO IMPLEMENT
 //    Instantiate an OcrLink, o and call o.ocrQuery with the file path
-//      to an image in PNG format, and a functioning API key.
+//      to an image in JPEG format, and a functioning API key.
 
 class OcrLink {
   static OcrLink? uplink;
@@ -27,7 +27,7 @@ class OcrLink {
     //  Connects to Free OCR API
     //  File passed as base64 string
 
-    final String bytes = "data:image/png;base64," +
+    final String bytes = "data:image/jpeg;base64," +
         base64.encode(io.File(path).readAsBytesSync());
     var res = await _sendQuery(apiKey, bytes);
     Map<String, dynamic> resBody =
