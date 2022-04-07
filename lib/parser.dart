@@ -225,6 +225,17 @@ class Prescription {
   final String? timeframe;
   final int? qt;
 
+  List<String> getFields(){
+    List<String> result = new List.empty(growable: true);
+    result.add(name);
+    result.add(rx.toString());
+    result.add(amt ?? "");
+    result.add(unit ?? "");
+    result.add(timeframe ?? "");
+    result.add(qt.toString() ?? "");
+    return result;
+  }
+
   Prescription._builder(PrescriptionBuilder builder):
         rx = builder.rx,
         amt = builder.amt,
