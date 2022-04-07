@@ -2,7 +2,7 @@ import 'dart:math';
 
 Prescription? parse(String x){
   final List<String> tokens = List.from(["qt","rx","quantity","qty","take"],growable: false);
-  final List<String> unitTokens = List.from(["pill","tablet","drop","daily","weekly","capsule","times"],growable: false);
+  final List<String> unitTokens = List.from(["pill","tablet","drop","daily","weekly","capsule","times","hours"],growable: false);
   final List<String> numericTokens = List.from(["one","two","three","four","five","six","eight","nine","ten",
     "once","twice","thrice"],growable: false);
   List<String> matched = List.empty(growable: true);
@@ -153,7 +153,7 @@ Prescription? parse(String x){
   }else{
     PrescriptionBuilder pb = PrescriptionBuilder(name,int.parse(matched[matched.indexOf("rx")+1]));
     i = 0;
-    if("daily weekly".contains(matched[0])){
+    if("daily weekly hour".contains(matched[0])){
       pb.timeframe = matched[0];
       i = 1;
     }
@@ -232,9 +232,18 @@ class Prescription {
     result.add(amt ?? "");
     result.add(unit ?? "");
     result.add(timeframe ?? "");
-    result.add(qt.toString() ?? "");
+    result.add(qt != null ? qt.toString():"");
     return result;
   }
+
+  Map toJson() => {
+    'name': name,
+    'rx': rx,
+    'amt': amt ?? -1,
+    'unit': unit ?? "a",
+    'timeframe': timeframe ?? "a",
+    'qt': qt ?? -1,
+  };
 
   Prescription._builder(PrescriptionBuilder builder):
         rx = builder.rx,
