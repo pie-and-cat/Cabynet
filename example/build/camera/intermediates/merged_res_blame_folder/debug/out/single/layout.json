@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/shreyasubramanya/Documents/flutter_calendar_view-master/example/build/camera/intermediates/res/merged/debug/layout/notification_template_part_chronometer.xml",
+        "source": "/Users/shreyasubramanya/.gradle/caches/transforms-2/files-2.1/b781330f13e915c5e33e9edfc19100b1/core-1.6.0/res/layout/notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "/Users/shreyasubramanya/Documents/flutter_calendar_view-master/example/build/camera/intermediates/res/merged/debug/layout/notification_template_part_time.xml",
+        "source": "/Users/shreyasubramanya/.gradle/caches/transforms-2/files-2.1/b781330f13e915c5e33e9edfc19100b1/core-1.6.0/res/layout/notification_template_part_time.xml"
+    },
+    {
+        "merged": "/Users/shreyasubramanya/Documents/flutter_calendar_view-master/example/build/camera/intermediates/res/merged/debug/layout/custom_dialog.xml",
+        "source": "/Users/shreyasubramanya/.gradle/caches/transforms-2/files-2.1/b781330f13e915c5e33e9edfc19100b1/core-1.6.0/res/layout/custom_dialog.xml"
+    }
+]

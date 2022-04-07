@@ -1,0 +1,34 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/shreyasubramanya/Documents/flutter_calendar_view-master/example/build/path_provider_android/intermediates/res/merged/debug/values-ka/values-ka.xml",
+            "map": [
+                {
+                    "source": "/Users/shreyasubramanya/.gradle/caches/transforms-2/files-2.1/b781330f13e915c5e33e9edfc19100b1/core-1.6.0/res/values-ka/values-ka.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/shreyasubramanya/Documents/flutter_calendar_view-master/example/build/path_provider_android/intermediates/incremental/mergeDebugResources/merged.dir/values-ka/values-ka.xml",
+            "map": [
+                {
+                    "source": "/Users/shreyasubramanya/.gradle/caches/transforms-2/files-2.1/b781330f13e915c5e33e9edfc19100b1/core-1.6.0/res/values-ka/values-ka.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        }
+    ]
+}
