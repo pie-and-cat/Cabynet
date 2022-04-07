@@ -5,3 +5,9 @@
 .idea/libraries/Flutter_Plugins.xml
 .idea/libraries/Dart_SDK.xml
 .idea/CSC-3380-Project-Main.iml
+.dart_tool/package_config.json
+.dart_tool/package_config_subset
+.dart_tool/version
+.idea/libraries/Dart_Packages.xml
+.packages
+android/local.properties
