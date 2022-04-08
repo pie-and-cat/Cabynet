@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import '../../extension.dart';
 import '../create_event_page.dart';
 import '../day_view_page.dart';
-import '../month_view_page.dart';
+import '../../month_view_page.dart';
 import '../week_view_page.dart';
+import '../../manual_prescription_form.dart';
 import '../../camerainput.dart';
 import 'package:camera/camera.dart';
 import 'dart:async';
@@ -42,7 +43,7 @@ class MobileHomePage extends StatelessWidget {
               height: 20,
             ),
             ElevatedButton(
-              onPressed: () =>  context.pushRoute(CreateEventPage()),
+              onPressed: () =>  context.pushRoute(NewApp()),
     child: Text("Add a Prescription (Manually)"),
             ),
             SizedBox(

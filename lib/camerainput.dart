@@ -2,11 +2,16 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:cabynet/extension.dart';
+import 'package:cabynet/json_save.dart';
 import 'package:camera/camera.dart';
 import 'package:cabynet/parser.dart';
 import 'package:flutter/material.dart';
-
+//import 'globals.dart' as globals;
+import 'main.dart';
+import 'month_view_page.dart';
 import 'ocr_link.dart';
+import 'manual_prescription_form.dart';
 
 class TakePictureScreen extends StatefulWidget {
   const TakePictureScreen({
@@ -33,7 +38,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
       // Get a specific camera from the list of available cameras.
       widget.camera,
       // Define the resolution to use.
-      ResolutionPreset.high,
+      ResolutionPreset.medium,
     );
 
     // Next, initialize the controller. This returns a Future.
@@ -80,9 +85,21 @@ class TakePictureScreenState extends State<TakePictureScreen> {
 
             final image = await _controller.takePicture();
             //K89146132788957
-            OcrLink o = OcrLink();
-            Future<dynamic> response = o.ocrQuery(image.path,"K89146132788957");
-            Prescription? presc = parse(response.toString());
+            OcrLink? o = OcrLink.getInstance();
+            String response = await o?.ocrQuery(image.path,"K89146132788957");
+            Prescription? presc = parse(response);
+            if(presc == null){
+              await Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (BuildContext context)  => NewApp(),
+                  ),
+              );
+            }else{
+              JsonSave save = JsonSave();
+              save.addPrescription(presc);
+              save.save();
+            }
+
 
             // If the picture was taken, display it on a new screen.
             await Navigator.of(context).push(
@@ -91,7 +108,6 @@ class TakePictureScreenState extends State<TakePictureScreen> {
                   // Pass the automatically generated path to
                   // the DisplayPictureScreen widget.
                   imagePath: image.path,
-                  p: presc,
                 ),
               ),
             );
@@ -108,27 +124,46 @@ class TakePictureScreenState extends State<TakePictureScreen> {
 
 // A widget that displays the picture taken by the user.
 class DisplayPictureScreen extends StatelessWidget {
-  final String imagePath;
-  final Prescription? p;
+  String imagePath;
 
+  OcrLink? o = OcrLink.getInstance();
+  late Future<dynamic>? response = notNull(o, imagePath);
+  late Prescription? presc = parse(response.toString());
 
+  static Future<dynamic>? notNull(OcrLink? o, String imagePath){
+    if(o != null){
+      return o.ocrQuery(imagePath,"K89146132788957");
+    }
 
-  const DisplayPictureScreen({Key? key, required this.imagePath,required this.p})
+  }
+  DisplayPictureScreen({Key? key, required this.imagePath})
       : super(key: key);
 
-  bool hasPerscription(Prescription p){
-    if(p == null){
-      return true;
+  String test(int val){
+    if(val == 0){
+      return "yes!";
     }
-    return false;
+      return "no";
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Display the Picture')),
+      appBar: AppBar(title: const Text("Take a picture!")),
       // The image is stored as a file on the device. Use the `Image.file`
       // constructor with the given path to display the image.
-      body: Image.file(File(imagePath)),
+      body:Column(
+        children:
+        [Image.file(File(imagePath)),
+          ElevatedButton(
+            onPressed: () => context.pushRoute(NewApp()),
+            child: Text("Add another Prescription?"),
+          ),
+          ElevatedButton(
+            onPressed: () => context.pushRoute(MonthViewPageDemo()),
+            child: Text("Calender View"),
+          ),],
+      )
+
     );
   }
 }

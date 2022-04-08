@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\dracu\\OneDrive\\Music\\Documents\\GitHub\\CSC-3380-Project-Main\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+            "outputFile": "C:\\Users\\sachar7\\StudioProjects\\CSC-3380-Project-Main\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\dracu\\OneDrive\\Music\\Documents\\GitHub\\CSC-3380-Project-Main\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "C:\\Users\\sachar7\\StudioProjects\\CSC-3380-Project-Main\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

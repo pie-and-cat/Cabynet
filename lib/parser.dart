@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:convert';
 
 Prescription? parse(String x){
   final List<String> tokens = List.from(["qt","rx","quantity","qty","take"],growable: false);
@@ -225,6 +226,16 @@ class Prescription {
   final String? timeframe;
   final int? qt;
 
+  void setPrescription(String name,String rx, String? amt, String? unit, String? timeframe, String qt){
+    name = name;
+    rx = int.parse(rx) as String;
+    amt = amt;
+    unit = unit;
+    timeframe = timeframe;
+    qt = int.parse(qt) as String;
+
+  }
+
   List<String> getFields(){
     List<String> result = new List.empty(growable: true);
     result.add(name);
@@ -270,6 +281,7 @@ class PrescriptionBuilder {
 
   PrescriptionBuilder(this.name, this.rx);
   //create special setter functions here if needed
+
 
   Prescription build(){
     return Prescription._builder(this);
